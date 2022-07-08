@@ -1,20 +1,25 @@
 <template>
-  <div>
-    <Modal />
-  </div>
+  <div>{{ text }}</div>
 </template>
 
 <script>
-import Modal from "./components/Modal.vue";
 export default {
   name: "App",
-  components: {
-    Modal,
-  },
+  components: {},
   data() {
     return {
+      text: "Hola vue",
       show: false,
     };
+  },
+  beforeCreate() {
+    console.log("beforeCreate", this.$data, this.$el);
+  },
+  created() {
+    console.log("created", this.$data, this.$el);
+  },
+  mounted() {
+    console.log("mounted", this.$data, this.$el);
   },
 };
 </script>
