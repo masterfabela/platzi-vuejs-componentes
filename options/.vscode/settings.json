@@ -3,4 +3,6 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
+  "editor.cursorSmoothCaretAnimation": true,
+  "files.eol": "\n",
 }
