@@ -10,7 +10,12 @@ export default {
       required: true,
     },
   },
-  setup(props, context) {},
+  setup(props, context) {
+    return {
+        repositories,
+        
+    }
+  },
   data() {
     return {
       repositories: [], // 1

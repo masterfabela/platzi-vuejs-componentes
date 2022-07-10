@@ -1,15 +1,25 @@
 <template>
-  <div></div>
+  <div>{{ counter }}</div>
 </template>
 
 <script>
-import { onMounted } from "vue";
+import {ref, watch } from 'vue'
 export default {
   name: "home-component",
   setup() {
-    onMounted(() => {
-      console.log("mounted!");
-    });
+
+    let counter = ref(0)
+
+    setInterval(() => counter.value++, 500)
+
+    watch(counter, (newValue, old) => {
+      console.log(newValue, old)
+    })
+
+    return {
+      counter
+    }
+
   },
 };
 </script>
