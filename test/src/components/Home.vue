@@ -1,23 +1,24 @@
 <template>
-  <div>{{ counter }}</div>
+  <div>{{fullName}}</div>
 </template>
 
 <script>
-import {ref, watch } from 'vue'
+import { ref } from '@vue/reactivity';
+import { computed } from '@vue/runtime-core';
+
 export default {
   name: "home-component",
   setup() {
 
-    let counter = ref(0)
+    const name = ref('Diana')
+    const lastName = ref('Martinez')
 
-    setInterval(() => counter.value++, 500)
-
-    watch(counter, (newValue, old) => {
-      console.log(newValue, old)
+    const fullName = computed(() => {
+      return `${name.value} ${lastName.value}` 
     })
-
+ 
     return {
-      counter
+      fullName
     }
 
   },
