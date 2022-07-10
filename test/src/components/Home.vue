@@ -3,18 +3,22 @@
 </template>
 
 <script>
-import { ref } from '@vue/reactivity';
-import { computed } from '@vue/runtime-core';
+import { computed, ref, toRefs } from '@vue/runtime-core';
 
 export default {
   name: "home-component",
-  setup() {
+  props: {
+    firstName: String,
+    lastName: String
+  },
+  setup(props) {
 
-    const name = ref('Diana')
-    const lastName = ref('Martinez')
+    let {firstName , lastName} = toRefs(props)
+
+    firstName = ref("Dario")
 
     const fullName = computed(() => {
-      return `${name.value} ${lastName.value}` 
+      return `${firstName.value} ${lastName.value}` 
     })
  
     return {
