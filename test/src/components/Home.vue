@@ -11,16 +11,21 @@ export default {
     firstName: String,
     lastName: String
   },
-  setup(props) {
+  setup(props, context) {
+
+    console.log(context)
 
     let {firstName , lastName} = toRefs(props)
-
     firstName = ref("Dario")
 
     const fullName = computed(() => {
       return `${firstName.value} ${lastName.value}` 
     })
- 
+
+    context.expose({
+      fullName
+    })
+
     return {
       fullName
     }
