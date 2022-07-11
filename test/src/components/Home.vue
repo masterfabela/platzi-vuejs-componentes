@@ -1,10 +1,11 @@
 <template>
   <div>{{fullName}}</div>
   <div>{{username}}</div>
+  <button ref="btn">Click!</button>
 </template>
 
 <script>
-import { computed, inject, ref, toRefs } from '@vue/runtime-core';
+import { computed, inject, ref, toRefs, watch } from '@vue/runtime-core';
 
 export default {
   name: "home-component",
@@ -18,11 +19,19 @@ export default {
 
     const username = inject("username")
 
+    const btn = ref(null);
+
+    console.log(btn.value)
+
     let {firstName , lastName} = toRefs(props)
     firstName = ref("Dario")
 
     const fullName = computed(() => {
       return `${firstName.value} ${lastName.value}` 
+    })
+
+    watch(btn, (value) => {
+      console.log(value)
     })
 
     context.expose({
@@ -31,7 +40,8 @@ export default {
 
     return {
       fullName,
-      username
+      username,
+      btn
     }
 
   },
