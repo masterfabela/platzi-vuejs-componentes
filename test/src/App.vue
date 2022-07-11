@@ -3,6 +3,7 @@
 </template>
 
 <script>
+import { provide } from '@vue/runtime-core'
 
 import Home from './components/Home.vue'
 
@@ -10,7 +11,12 @@ export default {
   name: 'App',
   components: {
     Home
+  },
+
+  setup() {
+    provide("username", "masterfabela")
   }
+
 }
 </script>
 

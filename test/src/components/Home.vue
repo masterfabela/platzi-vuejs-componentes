@@ -1,9 +1,10 @@
 <template>
   <div>{{fullName}}</div>
+  <div>{{username}}</div>
 </template>
 
 <script>
-import { computed, ref, toRefs } from '@vue/runtime-core';
+import { computed, inject, ref, toRefs } from '@vue/runtime-core';
 
 export default {
   name: "home-component",
@@ -15,6 +16,8 @@ export default {
 
     console.log(context)
 
+    const username = inject("username")
+
     let {firstName , lastName} = toRefs(props)
     firstName = ref("Dario")
 
@@ -23,11 +26,12 @@ export default {
     })
 
     context.expose({
-      fullName
+      fullName,
     })
 
     return {
-      fullName
+      fullName,
+      username
     }
 
   },
