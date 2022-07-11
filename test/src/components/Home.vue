@@ -4,18 +4,20 @@
   <button ref="btn">Click!</button>
 </template>
 
-<script>
-import { computed, inject, ref, toRefs, watch } from '@vue/runtime-core';
 
-export default {
-  name: "home-component",
-  props: {
+<script>
+  export default {
+    name: 'home-component'
+  }
+</script>
+
+<script setup>
+import { computed, inject, ref, toRefs, watch, defineExpose, defineProps} from '@vue/runtime-core';
+
+  const props = defineProps({
     firstName: String,
     lastName: String
-  },
-  setup(props, context) {
-
-    console.log(context)
+    })
 
     const username = inject("username")
 
@@ -30,20 +32,12 @@ export default {
       return `${firstName.value} ${lastName.value}` 
     })
 
+    defineExpose({
+    fullName,
+    })
+
     watch(btn, (value) => {
       console.log(value)
     })
 
-    context.expose({
-      fullName,
-    })
-
-    return {
-      fullName,
-      username,
-      btn
-    }
-
-  },
-};
 </script>
